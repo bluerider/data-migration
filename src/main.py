@@ -1,4 +1,4 @@
-import sys, tempfile, glob
+import sys, glob
 import psycopg2
 from data_migration import ingestion, outgestion, utils
 

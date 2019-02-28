@@ -1,4 +1,4 @@
-import zipfile
+import zipfile, tempfile
 
 def unzipFile(file):
     """
@@ -6,5 +6,5 @@ def unzipFile(file):
     """
     temp_dir = tempfile.mkdtemp()
     with zipfile.ZipFile(file, "r") as zip_ref:
-        zip_ref.extractall(tempdir)
+        zip_ref.extractall(temp_dir)
     return(temp_dir)
