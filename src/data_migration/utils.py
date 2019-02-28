@@ -19,3 +19,17 @@ def jsonToColumnar(file):
                     dictionary[key] = [item[key]]
     ## return a columnar dictionary
     return(dictionary)
+
+def compileSQLQueries(dictionary):
+    """
+    Compile dictionary values to sql statements
+    Return a list of sql statements
+    """
+    ## sort the keys
+    sorted_keys = tuple(sorted(dictionary.keys()))
+    ## create the iterator
+    iterator = zip(*[dictionary[key] for key in sorted_keys])
+    ## get a list of queries
+    queries = [''.join(["INSERT INTO items ",str(sorted_keys), " VALUES ",str(line)]) for line in iterator]
+    ## retun a list of queries
+    return(queries)

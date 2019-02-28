@@ -12,15 +12,17 @@ def main(zip_file, database):
     ## locate newly unzippes files
     json_files = glob.glob(temp_dir+"*.json")
     ## create the postgres connection
-    connection = psycopg2.connect(database)
+    #connection = psycopg2.connect(database)
     ## loop for all files in found json files
     for file in json_files:
         ## get columnar table
         temp_dict = utils.jsonToColumnar(file)
+        ## get the sql querie
+        sql_queries = utils.compileSQLQueries(temp_dict)
         ## write the table to database
-        outgestion.writeToDB(temp_dict, connection)
+        outgestion.writeToDB(sql_queries, connection)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     zip_file = sys.argv[1]
     database = sys.argv[2]
     main(zip_file, database)
