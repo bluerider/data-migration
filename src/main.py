@@ -18,7 +18,7 @@ def main(zip_file, database):
         ## get columnar table
         temp_dict = utils.jsonToColumnar(file)
         ## write the table to database
-        outgestion.writeToDB(temp_dict,)
+        outgestion.writeToDB(temp_dict, connection)
 
 if __name__ == '__main__':
     zip_file = sys.argv[1]
