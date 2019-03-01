@@ -30,6 +30,6 @@ def compileSQLQueries(dictionary):
     ## create the iterator
     iterator = zip(*[dictionary[key] for key in sorted_keys])
     ## get a list of queries
-    queries = [''.join(["INSERT INTO items ",str(sorted_keys), " VALUES ",str(line)]) for line in iterator]
+    queries = [' '.join(["INSERT INTO items",str(sorted_keys), "VALUES",str(line)]) for line in iterator]
     ## retun a list of queries
     return(queries)

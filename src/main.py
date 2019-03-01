@@ -1,5 +1,4 @@
 import sys, glob
-import psycopg2
 from data_migration import ingestion, outgestion, utils
 
 def main(zip_file, database):
@@ -10,9 +9,7 @@ def main(zip_file, database):
     ## create a temporary directory
     temp_dir = ingestion.unzipFile(zip_file)
     ## locate newly unzippes files
-    json_files = glob.glob(temp_dir+"*.json")
-    ## create the postgres connection
-    #connection = psycopg2.connect(database)
+    json_files = glob.glob('/'.join([temp_dir,"*.json"])
     ## loop for all files in found json files
     for file in json_files:
         ## get columnar table
