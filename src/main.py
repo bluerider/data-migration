@@ -8,8 +8,8 @@ def main(zip_file, database):
     """
     ## create a temporary directory
     temp_dir = ingestion.unzipFile(zip_file)
-    ## locate newly unzippes files
-    json_files = glob.glob('/'.join([temp_dir,"*.json"])
+    ## locate newly unzipped files
+    json_files = glob.glob('/'.join([temp_dir,"*.json"]))
     ## loop for all files in found json files
     for file in json_files:
         ## get columnar table
